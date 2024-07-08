@@ -1,0 +1,15 @@
+[window]
+opacity = 0.75
+decorations = "none"
+# startup_mode = "Maximized"
+
+[font]
+size = 13.0
+
+[font.normal]
+# family = "JetBrainsMonoNL Nerd Font"
+family = "SourceCodeVF"
+
+[colors.primary]
+foreground = "#ffbf00"
+background = "#000000"
