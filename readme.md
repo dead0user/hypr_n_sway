@@ -18,4 +18,4 @@
 - **Notify daemon** • [Mako](https://github.com/emersion/mako)
 - **App launcher** • [Wofi](https://sr.ht/~scoopta/wofi/)
 
-![Sway wm screenshot](media/screen_sway.png00)
+![Sway wm screenshot](media/screen_sway.png)
