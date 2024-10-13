@@ -1,0 +1,168 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 32, // Waybar height (to be removed for auto height)
+    "width": 1920, // Waybar width
+    "spacing": 2, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["custom/launcher","power-profiles-daemon","sway/workspaces","tray","sway/mode"],
+    "modules-center": ["clock","custom/weather"],
+    "modules-right": ["network","bluetooth","pulseaudio","battery","backlight","idle_inhibitor"],
+    // Modules configuration
+
+    "bluetooth": {
+    	"format": " {status}",
+    	"format-connected": " {device_alias}",
+    	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    	"on-click": "blueman-manager",
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 5
+    },
+    "clock": {
+        "format": "{:%H:%M | %d-%m-%Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+      	"interval": 1,
+        "format-wifi": "↓{bandwidthDownBytes} | ↑{bandwidthUpBytes} | ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+      	"on-click": "nm-connection-editor"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}%  {format_source}",
+        "format-bluetooth-muted": "  {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+  "custom/weather": {
+        "icon-size": 30,
+        "format": "| {icon} {}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "~/.config/hypr/scripts/weather.py",
+        "return-type": "json",
+        "format-icons": {
+            "Unknown": "",
+            "Cloudy": "󰖐",
+            "Fog": "",
+            "HeavyRain": "",
+            "HeavyShowers": "",
+            "HeavySnow": "",
+            "HeavySnowShowers": "󰜗",
+            "LightRain": "",
+            "LightShowers": "",
+            "LightSleet": "",
+            "LightSleetShowers": "",
+            "LightSnow": "",
+            "LightSnowShowers": "󰙿",
+            "PartlyCloudy": "",
+            "Sunny": "",
+            "ThunderyHeavyRain": "󰙾",
+            "ThunderyShowers": "",
+            "ThunderySnowShowers": "",
+            "VeryCloudy": ""
+        }
+    },
+    "sway/workspaces": {
+      "format": "{name}",
+     	"all-outputs": true,
+    	"sort-by-number": true,
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+      }
+    },
+    "custom/launcher": {
+      "format": " 󱗼",
+      "tooltip": false,
+      "on-click": "wofi -n --show drun -I",
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+    },
+    "memory": {
+        "format": "{}% ",
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        // "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""],
+      	"on-click": "gnome-power-statistics",
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+      	"on-scroll-up": "brightnessctl set +1",
+      	"on-scroll-down": "brightnessctl set 1-",
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        "interval": 5,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "sway/mode": {
+        "format": "{}",
+        "max-length": 50,
+      },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+       "tooltip": true,
+       "format-icons": {
+          "default": "",
+          "performance": "",
+          "balanced": "",
+          "power-saver": ""
+        },
+    },
+},
