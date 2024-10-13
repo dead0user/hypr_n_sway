@@ -22,13 +22,13 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
 set $lock ~/.config/sway/scripts/lockscreen
 
 # Autostart
-exec waybar -c /home/marcin/.config/waybar/config_sway
+exec waybar -c /home_dir/.config/waybar/config_sway
 exec swayidle -w timeout 800 '$lock' timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep '$lock'
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/marcin/Pictures/ai-generated-8099999_1920.png fill
+output * bg /full_path_to_file/ai-generated-8099999_1920.png fill
 #
 # Example configuration:
 #
